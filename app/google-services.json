@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "405774750743",
+    "firebase_url": "https://qmed-1524859200176.firebaseio.com",
+    "project_id": "qmed-1524859200176",
+    "storage_bucket": "qmed-1524859200176.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:405774750743:android:5a2a3a44a1403998",
+        "android_client_info": {
+          "package_name": "com.example.root.qmed"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "405774750743-stqpg8fqffb308qeko16gv28ruir49us.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.root.qmed",
+            "certificate_hash": "5f82d6bd52762e49b803c191c1118b35716e9a7e"
+          }
+        },
+        {
+          "client_id": "405774750743-ffev9ofrcfa7sab440ttt86ir4s4g0jl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.root.qmed",
+            "certificate_hash": "f759d8971835bb3eb6625f84141f918f527d4a4f"
+          }
+        },
+        {
+          "client_id": "405774750743-ldva39iq4mfapk436d2tftifqabdsskp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDr9rLAT262vtD-9iAKRFAxDI_SvKYOvnA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "405774750743-ldva39iq4mfapk436d2tftifqabdsskp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
