@@ -25,6 +25,14 @@
     <string name="sign_up_tv">Sign up!</string>
     <string name="title_activity_pharmacy_map">Map</string>
     <string name="request_med">Request a Medicine!</string>
+    <string-array name="settings">
+        <item>Settings</item>
+        <item>Change user-name</item>
+        <item>Change password</item>
+        <item>Change address</item>
+        <item>Change phone</item>
 
+
+    </string-array>
 
 </resources>
