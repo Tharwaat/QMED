@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.root.qmed.SignUpActivity"
+    tools:layout_editor_absoluteY="81dp">
+
+    <EditText
+        android:id="@+id/SignUpmail"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginBottom="19dp"
+        android:ems="10"
+        android:hint="@string/sign_up_mail"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/SignUpPass"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SignUpPhone" />
+
+    <EditText
+        android:id="@+id/SignUpPass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="18dp"
+        android:ems="10"
+        android:hint="@string/sign_up_password"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/SignUpbtn"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SignUpmail" />
+
+    <Button
+        android:id="@+id/SignUpbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="23dp"
+        android:layout_marginStart="51dp"
+        android:text="@string/sign_up_btn"
+        app:layout_constraintBottom_toTopOf="@+id/tvSignIn"
+        app:layout_constraintStart_toStartOf="@+id/SignUpPass"
+        app:layout_constraintTop_toBottomOf="@+id/SignUpPass"
+        android:layout_marginLeft="51dp" />
+
+    <TextView
+        android:id="@+id/tvSignIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="29dp"
+        android:layout_marginStart="23dp"
+        android:clickable="true"
+        android:text="@string/sign_up_text_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/SignUpbtn"
+        app:layout_constraintTop_toBottomOf="@+id/SignUpbtn"
+        android:layout_marginLeft="23dp" android:focusable="true"/>
+
+    <EditText
+        android:id="@+id/SignUpPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="17dp"
+        android:ems="10"
+        android:inputType="number"
+        android:hint="Required hone No."
+        app:layout_constraintBottom_toTopOf="@+id/SignUpmail"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SignUpAddress" />
+
+    <EditText
+        android:id="@+id/SignUpName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="76dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Enter Your Name"
+        app:layout_constraintBottom_toTopOf="@+id/SignUpAddress"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/SignUpAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="13dp"
+        android:ems="10"
+        android:hint="Required Address"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/SignUpPhone"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SignUpName" />
+
+</android.support.constraint.ConstraintLayout>
