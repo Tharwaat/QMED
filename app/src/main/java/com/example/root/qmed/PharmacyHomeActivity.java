@@ -1,11 +1,14 @@
 package com.example.root.qmed;
 
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.firebase.geofire.GeoFire;
@@ -23,6 +26,7 @@ public class PharmacyHomeActivity extends AppCompatActivity implements GoogleApi
         GoogleApiClient.OnConnectionFailedListener {
     // LogCat tag
     private static final String TAG = PharmacyHomeActivity.class.getSimpleName();
+    private FirebaseAuth firebaseAuth;
 
     private final static int PLAY_SERVICES_RESOLUTION_REQUEST = 1000;
 
@@ -36,6 +40,7 @@ public class PharmacyHomeActivity extends AppCompatActivity implements GoogleApi
 
     private LocationRequest mLocationRequest;
 
+
     // Location updates intervals in sec
     private static int UPDATE_INTERVAL = 10000; // 10 sec
     private static int FATEST_INTERVAL = 5000; // 5 sec
@@ -46,6 +51,8 @@ public class PharmacyHomeActivity extends AppCompatActivity implements GoogleApi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pharmacy_home);
+        firebaseAuth = FirebaseAuth.getInstance();
+        //firebaseAuth = FirebaseAuth.getInstance();
 
         // First we need to check availability of play services
         if (checkPlayServices()) {
@@ -53,7 +60,15 @@ public class PharmacyHomeActivity extends AppCompatActivity implements GoogleApi
             buildGoogleApiClient();
         }
 
-
+        Button mlogoutbtn = (Button) findViewById(R.id.logout);
+        mlogoutbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                firebaseAuth.signOut();
+                startActivity(new Intent(PharmacyHomeActivity.this,SignInActivity.class));
+                finish();
+            }
+        });
 
     }
 
@@ -61,7 +76,6 @@ public class PharmacyHomeActivity extends AppCompatActivity implements GoogleApi
      * Method to display the location on UI
      * */
     private void getLocation() {
-
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
@@ -116,7 +130,6 @@ public class PharmacyHomeActivity extends AppCompatActivity implements GoogleApi
     @Override
     protected void onResume() {
         super.onResume();
-
         checkPlayServices();
     }
 

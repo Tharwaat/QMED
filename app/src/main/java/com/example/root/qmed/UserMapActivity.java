@@ -1,6 +1,6 @@
 package com.example.root.qmed;
 
-import android.Manifest;
+
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.support.annotation.NonNull;
