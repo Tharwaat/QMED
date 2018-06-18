@@ -1,6 +1,7 @@
 package com.example.root.qmed;
 
 
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.support.annotation.NonNull;
@@ -24,7 +25,6 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -57,17 +57,8 @@ public class UserMapActivity extends FragmentActivity implements OnMapReadyCallb
         mRequest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
-                DatabaseReference ref = FirebaseDatabase.getInstance().getReference("customerRequest");
-                GeoFire geoFire = new GeoFire(ref);
-                geoFire.setLocation(userId, new GeoLocation(mLastLocation.getLatitude(), mLastLocation.getLongitude()));
-
-                orderLocation = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
-                mMap.addMarker(new MarkerOptions().position(orderLocation).title("Order will come here!"));
-
-                mRequest.setText("Searching for medicine... ");
-                getClosestDriver();
+                startActivity(new Intent(UserMapActivity.this, RequestActivity.class));
+                finish();
             }
         });
     }

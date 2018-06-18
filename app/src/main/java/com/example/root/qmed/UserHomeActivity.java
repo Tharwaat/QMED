@@ -32,7 +32,6 @@ public class UserHomeActivity extends AppCompatActivity
             finish();
         }
         FirebaseUser user = firebaseAuth.getCurrentUser();
-
        /* FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

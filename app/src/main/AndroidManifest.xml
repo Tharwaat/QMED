@@ -45,7 +45,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".SignUpActivity" />
-        <activity android:name=".PharmacyHomeActivity"></activity>
+        <activity android:name=".PharmacyHomeActivity" />
+        <activity android:name=".RequestActivity" />
+        <activity android:name=".ResultsActivity"></activity>
     </application>
 
 </manifest>
