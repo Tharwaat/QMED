@@ -48,6 +48,8 @@
         <activity android:name=".PharmacyHomeActivity" />
         <activity android:name=".SettingsActivity" />
 
+        <activity android:name=".RequestActivity" />
+        <activity android:name=".ResultsActivity"></activity>
     </application>
 
 </manifest>
