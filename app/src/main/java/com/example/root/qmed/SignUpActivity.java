@@ -26,13 +26,14 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     ////
-    private Button signupBt;
+   // private Button signupBt;
     private EditText etemail;
     private EditText etpassword;
     private EditText etname;
     private EditText etaddress;
     private EditText etphone;
-    private TextView tvlogin;
+    private TextView register;
+
     private ProgressDialog pd;
     Customer customer;
 
@@ -43,17 +44,17 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_sign_up);
 
         mAuth = FirebaseAuth.getInstance();
-        signupBt = (Button) findViewById(R.id.SignUpbtn);
+      //  signupBt = (Button) findViewById(R.id.SignUpbtn);
+        register = (TextView) findViewById(R.id.register);
+
         etemail = (EditText) findViewById(R.id.SignUpmail);
         etpassword = (EditText) findViewById(R.id.SignUpPass);
         etname = (EditText)findViewById(R.id.SignUpName);
         etaddress = (EditText)findViewById(R.id.SignUpAddress);
         etphone = (EditText)findViewById(R.id.SignUpPhone);
-        tvlogin = (TextView) findViewById(R.id.tvSignIn);
         pd = new ProgressDialog(this);
         ////
-        signupBt.setOnClickListener(this);
-        tvlogin.setOnClickListener(this);
+        register.setOnClickListener(this);
     }
 
 
@@ -137,10 +138,10 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onClick(View view) {
-        if(view == signupBt) register();
-        else if (view == tvlogin){
-            startActivity(new Intent(this,SignInActivity.class));
-            finish();
-        }
+        if(view == register) register();
+       // else if (view == tvlogin){
+         //   startActivity(new Intent(this,SignInActivity.class));
+           // finish();
+       // }
     }
 }
