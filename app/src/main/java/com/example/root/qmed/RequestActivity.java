@@ -1,6 +1,7 @@
 package com.example.root.qmed;
 
 import android.content.Intent;
+import android.location.Location;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -20,13 +21,20 @@ public class RequestActivity extends AppCompatActivity {
         findbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
              String med = medicine.getText().toString();
+             Bundle b = getIntent().getExtras();
+             b.putString("reqMed", med);
 
              Intent intent = new Intent(getApplicationContext(),ResultsActivity.class);
-             intent.putExtra("reqMed", med);
+             intent.putExtras(b);
 
              startActivity(intent);
             }
         });
+
+
+
+
     }
 }

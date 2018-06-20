@@ -42,6 +42,7 @@ public class UserMapActivity extends FragmentActivity implements OnMapReadyCallb
     LocationRequest mLocationRequest;
     Button mRequest;
     LatLng orderLocation;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,8 +58,20 @@ public class UserMapActivity extends FragmentActivity implements OnMapReadyCallb
         mRequest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(UserMapActivity.this, RequestActivity.class));
-                finish();
+                Location l = mLastLocation;
+                double lon = l.getLongitude();
+                double lat = l.getLatitude();
+
+                Bundle b = new Bundle();
+                b.putDouble("curlon", lon);
+                b.putDouble("curlat", lat);
+
+
+
+                Intent intent = new Intent(getApplicationContext(),RequestActivity.class);
+                intent.putExtras(b);
+
+                startActivity(intent);
             }
         });
     }
