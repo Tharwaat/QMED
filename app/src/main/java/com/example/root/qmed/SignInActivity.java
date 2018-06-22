@@ -30,11 +30,10 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     private EditText password;
     private TextView textViewSignup;
     private FirebaseAuth firebaseAuth;
-    //private FirebaseAuth.AuthStateListener mAuthListener;
+    private DatabaseReference mDatabase;
     private ProgressDialog progressDialog;
     String userId ;
-    //read from db
-    private DatabaseReference mDatabase;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

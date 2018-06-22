@@ -1,5 +1,6 @@
 package com.example.root.qmed;
 
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.support.v4.app.ActivityCompat;
@@ -16,8 +17,13 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 public class PharmacyHomeActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener {
@@ -41,17 +47,43 @@ public class PharmacyHomeActivity extends AppCompatActivity implements GoogleApi
     private static int FATEST_INTERVAL = 5000; // 5 sec
     private static int DISPLACEMENT = 10; // 10 meters
 
+    private FirebaseAuth firebaseAuth;
+    private DatabaseReference mDatabase;
+    ArrayList<Request> requests = new ArrayList<Request>();
+    String pharmacyID;
+    String uID;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pharmacy_home);
 
+        Request request = new Request("omar","3ezzaby","ahram","01111301983","accepted","asprin","W5YVs58k7HYonR0fsn1X6lGWWpa2");
+        Intent i = new Intent(this, PharmacyRequest.class);
+        i.putExtra("sampleObject", request);
+        startActivity(i);
+        finish();
+
         // First we need to check availability of play services
         if (checkPlayServices()) {
             // Building the GoogleApi client
             buildGoogleApiClient();
         }
+        firebaseAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        uID = firebaseAuth.getCurrentUser().getUid();
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                getRequests(dataSnapshot);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
 
 
@@ -140,4 +172,23 @@ public class PharmacyHomeActivity extends AppCompatActivity implements GoogleApi
     public void onConnectionSuspended(int arg0) {
         mGoogleApiClient.connect();
     }
+
+    private void getRequests(DataSnapshot dataSnapshot) {
+        for (DataSnapshot ds : dataSnapshot.getChildren())
+        {
+            Request request = new Request();
+            String customerID ;
+            customerID = "W5YVs58k7HYonR0fsn1X6lGWWpa2";
+
+           /* request.setCustomerAddress((String) dataSnapshot.child("Users").child(customerID).child("address").getValue());
+            request.setCustomerName((String) dataSnapshot.child("Users").child(customerID).child("name").getValue());
+            request.setCustomerPhone((String) dataSnapshot.child("Users").child(customerID).child("phone").getValue());
+            request.setMedicine((String) dataSnapshot.child("Requests").child(pharmacyID).child(customerID).child("medicine").getValue());
+            request.setPharmacy((String) dataSnapshot.child("Users").child(pharmacyID).child("name").getValue());
+            request.setState((String) dataSnapshot.child("Requests").child(pharmacyID).child(customerID).child("state").getValue());*/
+        }
+
+
+    }
+
 }

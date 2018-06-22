@@ -24,7 +24,6 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
 
     private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthListener;
     ////
     private Button signupBt;
     private EditText etemail;

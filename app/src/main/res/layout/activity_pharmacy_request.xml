@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.root.qmed.PharmacyRequest">
+
+    <Button
+        android:id="@+id/acceptBtn"
+        android:layout_width="137dp"
+        android:layout_height="47dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/acceptBtn"
+        app:layout_constraintBaseline_toBaselineOf="@+id/rejectBtn"
+        app:layout_constraintEnd_toStartOf="@+id/rejectBtn"
+        app:layout_constraintHorizontal_bias="0.53"
+        app:layout_constraintStart_toStartOf="parent"
+        android:onClick="acceptRequest"
+        />
+
+    <Button
+        android:id="@+id/rejectBtn"
+        android:layout_width="133dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="64dp"
+        android:layout_marginEnd="32dp"
+        android:text="@string/rejectBtn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:onClick="rejectRequest"/>
+
+    <TextView
+        android:id="@+id/customerAddress"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/caddress"
+        app:layout_constraintBottom_toTopOf="@+id/customerPhone"
+        app:layout_constraintEnd_toEndOf="@+id/customerPhone"
+        app:layout_constraintStart_toStartOf="@+id/customerPhone"
+        app:layout_constraintTop_toBottomOf="@+id/customerName" />
+
+    <TextView
+        android:id="@+id/customerName"
+        android:layout_width="279dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="22dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="39dp"
+        android:text="@string/cname"
+        app:layout_constraintBottom_toTopOf="@+id/customerAddress"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" android:layout_marginStart="40dp"/>
+
+    <TextView
+        android:id="@+id/customerPhone"
+        android:layout_width="275dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginStart="40dp"
+        android:text="@string/cphone"
+        app:layout_constraintBottom_toTopOf="@+id/medicine"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/customerAddress" />
+
+    <TextView
+        android:id="@+id/medicine"
+        android:layout_width="276dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="205dp"
+        android:text="@string/medicine"
+        app:layout_constraintBottom_toTopOf="@+id/rejectBtn"
+        app:layout_constraintStart_toStartOf="@+id/customerPhone"
+        app:layout_constraintTop_toBottomOf="@+id/customerPhone" />
+
+</android.support.constraint.ConstraintLayout>
