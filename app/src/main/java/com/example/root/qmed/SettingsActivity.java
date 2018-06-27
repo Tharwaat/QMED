@@ -1,5 +1,6 @@
 package com.example.root.qmed;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -25,10 +26,11 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
     TextView second ;
     EditText editText ;
     EditText editText2 ;
-    Button mButton ;
+   // Button mButton ;
     String userID;
     String selected;
     FirebaseUser user;
+    TextView confirm;
 
     private DatabaseReference mDatabase;
     @Override
@@ -44,8 +46,10 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
-        mButton = findViewById(R.id.button);
-        mButton.setOnClickListener(this);
+        confirm = (TextView) findViewById(R.id.confirm);
+        confirm.setOnClickListener(this);
+       // mButton = findViewById(R.id.button);
+       // mButton.setOnClickListener(this);
         mDatabase = FirebaseDatabase.getInstance().getReference();
         user= FirebaseAuth.getInstance().getCurrentUser();
 
@@ -88,6 +92,12 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
             editText2.setVisibility(View.VISIBLE);
             first.setText("Enter the new phone");
             second.setText("Confirm the entered phone");
+        }else if(selected.equals("Settings"))
+        {
+            editText.setVisibility(View.INVISIBLE);
+            editText2.setVisibility(View.INVISIBLE);
+            first.setText("");
+            second.setText("");
         }
 
     }
@@ -109,26 +119,42 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
         {
             if(selected.equals("Change user-name"))
             {
-                Toast.makeText(this, "Updating",
+                Toast.makeText(this, "Updated",
                         Toast.LENGTH_SHORT).show();
                 mDatabase.child("Users").child(userID).child("name").setValue(editone);
+                Intent intent = new Intent(this , UserHomeActivity.class);
+                startActivity(intent);
+                finish();
 
             }
             else if (selected.equals("Change password"))
             {
+                Toast.makeText(this, "Updated",
+                        Toast.LENGTH_SHORT).show();
                 mDatabase.child("Users").child(userID).child("password").setValue(editone);
                 user.updatePassword(editone);
+                Intent intent = new Intent(this , UserHomeActivity.class);
+                startActivity(intent);
+                finish();
             }
 
             else if (selected.equals("Change address"))
             {
+                Toast.makeText(this, "Updated",
+                        Toast.LENGTH_SHORT).show();
                 mDatabase.child("Users").child(userID).child("address").setValue(editone);
-
+                Intent intent = new Intent(this , UserHomeActivity.class);
+                startActivity(intent);
+                finish();
             }
             else if (selected.equals("Change phone"))
             {
+                Toast.makeText(this, "Updated",
+                        Toast.LENGTH_SHORT).show();
                 mDatabase.child("Users").child(userID).child("phone").setValue(editone);
-
+                Intent intent = new Intent(this , UserHomeActivity.class);
+                startActivity(intent);
+                finish();
             }
         }
 

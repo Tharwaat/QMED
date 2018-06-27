@@ -4,17 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PharmacyHomeActivity"
-    android:background="#7f7f7f"
-    >
+    tools:context=".ResultsActivity">
 
-    <Button
-        android:id="@+id/logout"
+    <TextView
+        android:id="@+id/resulttxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="18dp"
-        android:text="@string/logoutbtn"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="138dp"
+        android:text="@string/result_med"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

@@ -7,6 +7,8 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.firebase.geofire.GeoFire;
@@ -30,6 +32,7 @@ public class PharmacyHomeActivity extends AppCompatActivity implements GoogleApi
     // LogCat tag
     private static final String TAG = PharmacyHomeActivity.class.getSimpleName();
 
+
     private final static int PLAY_SERVICES_RESOLUTION_REQUEST = 1000;
 
     private Location mLastLocation;
@@ -41,6 +44,7 @@ public class PharmacyHomeActivity extends AppCompatActivity implements GoogleApi
     private boolean mRequestingLocationUpdates = false;
 
     private LocationRequest mLocationRequest;
+
 
     // Location updates intervals in sec
     private static int UPDATE_INTERVAL = 10000; // 10 sec
@@ -58,12 +62,15 @@ public class PharmacyHomeActivity extends AppCompatActivity implements GoogleApi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pharmacy_home);
+        firebaseAuth = FirebaseAuth.getInstance();
+        //firebaseAuth = FirebaseAuth.getInstance();
 
-        Request request = new Request("omar","3ezzaby","ahram","01111301983","accepted","asprin","W5YVs58k7HYonR0fsn1X6lGWWpa2");
+      /*  Request request = new Request("omar","3ezzaby","ahram","01111301983","accepted","asprin","W5YVs58k7HYonR0fsn1X6lGWWpa2");
         Intent i = new Intent(this, PharmacyRequest.class);
         i.putExtra("sampleObject", request);
         startActivity(i);
         finish();
+      S */
 
         // First we need to check availability of play services
         if (checkPlayServices()) {
@@ -76,7 +83,7 @@ public class PharmacyHomeActivity extends AppCompatActivity implements GoogleApi
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                getRequests(dataSnapshot);
+                //getRequests(dataSnapshot);
             }
 
             @Override
@@ -85,7 +92,15 @@ public class PharmacyHomeActivity extends AppCompatActivity implements GoogleApi
             }
         });
 
-
+        Button mlogoutbtn = (Button) findViewById(R.id.logout);
+        mlogoutbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                firebaseAuth.signOut();
+                startActivity(new Intent(PharmacyHomeActivity.this,SignInActivity.class));
+                finish();
+            }
+        });
 
     }
 
@@ -93,7 +108,6 @@ public class PharmacyHomeActivity extends AppCompatActivity implements GoogleApi
      * Method to display the location on UI
      * */
     private void getLocation() {
-
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
@@ -148,7 +162,6 @@ public class PharmacyHomeActivity extends AppCompatActivity implements GoogleApi
     @Override
     protected void onResume() {
         super.onResume();
-
         checkPlayServices();
     }
 
@@ -173,22 +186,22 @@ public class PharmacyHomeActivity extends AppCompatActivity implements GoogleApi
         mGoogleApiClient.connect();
     }
 
-    private void getRequests(DataSnapshot dataSnapshot) {
+   /* private void getRequests(DataSnapshot dataSnapshot) {
         for (DataSnapshot ds : dataSnapshot.getChildren())
         {
             Request request = new Request();
             String customerID ;
             customerID = "W5YVs58k7HYonR0fsn1X6lGWWpa2";
 
-           /* request.setCustomerAddress((String) dataSnapshot.child("Users").child(customerID).child("address").getValue());
+            request.setCustomerAddress((String) dataSnapshot.child("Users").child(customerID).child("address").getValue());
             request.setCustomerName((String) dataSnapshot.child("Users").child(customerID).child("name").getValue());
             request.setCustomerPhone((String) dataSnapshot.child("Users").child(customerID).child("phone").getValue());
             request.setMedicine((String) dataSnapshot.child("Requests").child(pharmacyID).child(customerID).child("medicine").getValue());
             request.setPharmacy((String) dataSnapshot.child("Users").child(pharmacyID).child("name").getValue());
-            request.setState((String) dataSnapshot.child("Requests").child(pharmacyID).child(customerID).child("state").getValue());*/
+            request.setState((String) dataSnapshot.child("Requests").child(pharmacyID).child(customerID).child("state").getValue());
         }
 
 
-    }
+    }*/
 
 }

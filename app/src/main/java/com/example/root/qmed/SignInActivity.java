@@ -25,7 +25,7 @@ import com.google.firebase.database.ValueEventListener;
 public class SignInActivity extends AppCompatActivity implements View.OnClickListener{
 
 
-    private Button buttonSignIn;
+    private TextView textViewSignIn;
     private EditText email;
     private EditText password;
     private TextView textViewSignup;
@@ -60,12 +60,12 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
         }
 
-        buttonSignIn = (Button) findViewById(R.id.signin);
         email = (EditText) findViewById(R.id.mail);
         password = (EditText) findViewById(R.id.password);
+        textViewSignIn = (TextView) findViewById(R.id.login) ;
         textViewSignup = (TextView) findViewById(R.id.tvSignUp);
         progressDialog = new ProgressDialog(this);
-        buttonSignIn.setOnClickListener(this);
+        textViewSignIn.setOnClickListener(this);
         textViewSignup.setOnClickListener(this);
     }
 
@@ -116,7 +116,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     }
     @Override
     public void onClick(View view) {
-        if(view==buttonSignIn){
+        if(view==textViewSignIn){
             userLogin();
         }
         if (view==textViewSignup){

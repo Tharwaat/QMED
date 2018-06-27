@@ -4,99 +4,134 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/backgrey"
     tools:context="com.example.root.qmed.SignUpActivity"
-    tools:layout_editor_absoluteY="81dp">
+    tools:layout_editor_absoluteY="25dp">
 
     <EditText
         android:id="@+id/SignUpmail"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="19dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginStart="42dp"
+        android:background="@drawable/edittextstyle"
+        android:drawableLeft="@drawable/ic_action_name"
         android:ems="10"
-        android:hint="@string/sign_up_mail"
+        android:hint="E-mail..."
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/SignUpPass"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SignUpPhone" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SignUpPhone"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/SignUpPass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="18dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginStart="42dp"
+        android:background="@drawable/edittextstyle"
+        android:drawableLeft="@drawable/ic_action_password"
         android:ems="10"
-        android:hint="@string/sign_up_password"
+        android:hint="Password..."
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/SignUpbtn"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SignUpmail" />
+        app:layout_constraintBottom_toTopOf="@+id/cardView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SignUpmail"
+        tools:ignore="MissingConstraints" />
 
-    <Button
-        android:id="@+id/SignUpbtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="23dp"
-        android:layout_marginStart="51dp"
-        android:text="@string/sign_up_btn"
-        app:layout_constraintBottom_toTopOf="@+id/tvSignIn"
-        app:layout_constraintStart_toStartOf="@+id/SignUpPass"
-        app:layout_constraintTop_toBottomOf="@+id/SignUpPass"
-        android:layout_marginLeft="51dp" />
-
-    <TextView
-        android:id="@+id/tvSignIn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="29dp"
-        android:layout_marginStart="23dp"
-        android:clickable="true"
-        android:text="@string/sign_up_text_view"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/SignUpbtn"
-        app:layout_constraintTop_toBottomOf="@+id/SignUpbtn"
-        android:layout_marginLeft="23dp" android:focusable="true"/>
 
     <EditText
         android:id="@+id/SignUpPhone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="17dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginStart="42dp"
+        android:background="@drawable/edittextstyle"
+        android:drawableLeft="@drawable/ic_action_phone"
         android:ems="10"
+        android:hint="Phone number..."
         android:inputType="number"
-        android:hint="Required hone No."
         app:layout_constraintBottom_toTopOf="@+id/SignUpmail"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SignUpAddress" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SignUpAddress"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/SignUpName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_marginTop="76dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="13dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="198dp"
+        android:background="@drawable/edittextstyle"
+        android:drawableLeft="@drawable/ic_action_user"
         android:ems="10"
+        android:hint="Username..."
         android:inputType="textPersonName"
-        android:hint="Enter Your Name"
+        android:textSize="17dp"
         app:layout_constraintBottom_toTopOf="@+id/SignUpAddress"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/SignUpAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="13dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="14dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginStart="42dp"
+        android:background="@drawable/edittextstyle"
+        android:drawableLeft="@drawable/ic_action_address"
         android:ems="10"
-        android:hint="Required Address"
+        android:hint="Address..."
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/SignUpPhone"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SignUpName" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SignUpName"
+        tools:ignore="MissingConstraints" />
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="48dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginStart="42dp"
+        app:cardBackgroundColor="#f23557"
+        app:cardCornerRadius="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SignUpPass"
+        tools:ignore="MissingConstraints">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Register"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
 
 </android.support.constraint.ConstraintLayout>

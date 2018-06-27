@@ -31,6 +31,11 @@
     <string name="caddress">TextView</string>
     <string name="cphone">TextView</string>
     <string name="medicine">TextView</string>
+    <string name="logoutbtn">Logout</string>
+    <string name="req_med">Panadol?</string>
+    <string name="hint_txt">Please, enter below the required medicine.</string>
+    <string name="find_btn">Find!</string>
+    <string name="result_med">result medecine here</string>
     <string-array name="settings">
         <item>Settings</item>
         <item>Change user-name</item>
