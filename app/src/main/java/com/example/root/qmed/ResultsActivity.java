@@ -1,6 +1,5 @@
 package com.example.root.qmed;
 
-import android.location.Location;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -10,6 +9,7 @@ import com.firebase.geofire.GeoLocation;
 import com.firebase.geofire.GeoQuery;
 import com.firebase.geofire.GeoQueryEventListener;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -19,37 +19,35 @@ public class ResultsActivity extends AppCompatActivity {
 
     LatLng orderLocation;
     TextView resultMed;
+    private int radius = 1;
+    private Boolean pharmacyFound = false;
+    private String pharmacyFoundID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
 
-        resultMed = (TextView) findViewById(R.id.resulttxt);
+        //resultMed = (TextView) findViewById(R.id.resulttxt);
 
         Bundle b = getIntent().getExtras();
 
-        resultMed.setText(b.getString("reqMed"));
+        //resultMed.setText(b.getString("reqMed"));
 
+        String medname = b.getString("reqMed");
         double curlon = b.getDouble("curlon");
         double curlat = b.getDouble("curlat");
 
         orderLocation = new LatLng(curlat,curlon);
 
-         int a = 0;
-         int c = 0;
-        getClosestDriver(orderLocation);
-
-
+        getClosestDriver(orderLocation, medname);
     }
 
 
 
-    private int radius = 1;
-    private Boolean pharmacyFound = false;
-    private String pharmacyFoundID;
 
-    private void getClosestDriver(final LatLng curLocation){
+
+    private String getClosestDriver(final LatLng curLocation, final String mname){
         DatabaseReference pharmacyLocation = FirebaseDatabase.getInstance().getReference().child("availPharmacies");
 
         GeoFire geoFire = new GeoFire(pharmacyLocation);
@@ -63,15 +61,8 @@ public class ResultsActivity extends AppCompatActivity {
                     pharmacyFound = true;
                     pharmacyFoundID = key;
 
-                    resultMed.setText(pharmacyFoundID);
-                    /*DatabaseReference pharmacyRef = FirebaseDatabase.getInstance().getReference().child("Users").child(pharmacyFoundID);
-                    String customerId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                    CreateRequest(mname, pharmacyFoundID);
 
-                    HashMap map = new HashMap();
-                    map.put("customerRequestId", customerId);
-                    pharmacyRef.updateChildren(map);
-
-                    getPharmacyLocation();*/
 
                 }
             }
@@ -91,7 +82,7 @@ public class ResultsActivity extends AppCompatActivity {
                 if (!pharmacyFound)
                 {
                     radius++;
-                    getClosestDriver(curLocation);
+                    getClosestDriver(curLocation,mname);
                 }
             }
 
@@ -100,5 +91,20 @@ public class ResultsActivity extends AppCompatActivity {
 
             }
         });
+        return pharmacyFoundID;
+    }
+
+    public void CreateRequest(String MedName, String PID){
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        String uID = firebaseAuth.getCurrentUser().getUid();
+
+        DatabaseReference newReq = FirebaseDatabase.getInstance().getReference().child("Requests")
+                                    .child(PID).child(uID).child("medicine");
+        newReq.setValue(MedName);
+
+        newReq = FirebaseDatabase.getInstance().getReference().child("Requests")
+                .child(PID).child(uID).child("state");
+
+        newReq.setValue("stall");
     }
 }

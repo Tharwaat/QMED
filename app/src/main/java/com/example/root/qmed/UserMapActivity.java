@@ -139,63 +139,6 @@ public class UserMapActivity extends FragmentActivity implements OnMapReadyCallb
     }
 
 
-    private int radius = 1;
-    private Boolean pharmacyFound = false;
-    private String pharmacyFoundID;
-
-    private void getClosestDriver(){
-        DatabaseReference pharmacyLocation = FirebaseDatabase.getInstance().getReference().child("availPharmacies");
-
-        GeoFire geoFire = new GeoFire(pharmacyLocation);
-        GeoQuery geoQuery = geoFire.queryAtLocation(new GeoLocation(orderLocation.latitude, orderLocation.longitude), radius);
-        geoQuery.removeAllListeners();
-
-        geoQuery.addGeoQueryEventListener(new GeoQueryEventListener() {
-            @Override
-            public void onKeyEntered(String key, GeoLocation location) {
-                if (!pharmacyFound){
-                    pharmacyFound = true;
-                    pharmacyFoundID = key;
-
-                    /*DatabaseReference pharmacyRef = FirebaseDatabase.getInstance().getReference().child("Users").child(pharmacyFoundID);
-                    String customerId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
-                    HashMap map = new HashMap();
-                    map.put("customerRequestId", customerId);
-                    pharmacyRef.updateChildren(map);
-
-                    getPharmacyLocation();*/
-                    mRequest.setText("Waiting for nearby pharmacies response....");
-
-                }
-            }
-
-            @Override
-            public void onKeyExited(String key) {
-
-            }
-
-            @Override
-            public void onKeyMoved(String key, GeoLocation location) {
-
-            }
-
-            @Override
-            public void onGeoQueryReady() {
-                if (!pharmacyFound)
-                {
-                    radius++;
-                    getClosestDriver();
-                }
-            }
-
-            @Override
-            public void onGeoQueryError(DatabaseError error) {
-
-            }
-        });
-    }
-
     public void DisconnectCustomer(){
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("customerRequest");
@@ -203,40 +146,5 @@ public class UserMapActivity extends FragmentActivity implements OnMapReadyCallb
         GeoFire geoFire = new GeoFire(ref);
         geoFire.removeLocation(userId);
     }
-
-
-    /*private Marker mPharmacyMarker;
-    private void getPharmacyLocation(){
-        DatabaseReference pharmacyLocationRef = FirebaseDatabase.getInstance().getReference().child("workingPharmacies").child(pharmacyFoundID).child("l");
-
-        pharmacyLocationRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists()){
-                    List<Object> map = (List<Object>) dataSnapshot.getValue();
-                    double locationLat = 0;
-                    double locationLng = 0;
-                        mRequest.setText("Pharmacy Found");
-                    if(map.get(0) != null){
-                        locationLat = Double.parseDouble(map.get(0).toString());
-                    }
-                    if(map.get(1) != null){
-                        locationLng = Double.parseDouble(map.get(1).toString());
-                    }
-                    LatLng driverLatLng = new LatLng(locationLat,locationLng);
-                    if(mPharmacyMarker != null){
-                        mPharmacyMarker.remove();
-                    }
-                    mPharmacyMarker = mMap.addMarker(new MarkerOptions().position(driverLatLng).title("Pharmacy"));
-                }
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-        });
-
-    }*/
 
 }
