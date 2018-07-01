@@ -65,12 +65,12 @@ public class PharmacyHomeActivity extends AppCompatActivity implements GoogleApi
         firebaseAuth = FirebaseAuth.getInstance();
         //firebaseAuth = FirebaseAuth.getInstance();
 
-      /*  Request request = new Request("omar","3ezzaby","ahram","01111301983","accepted","asprin","W5YVs58k7HYonR0fsn1X6lGWWpa2");
+        Request request = new Request("omar","3ezzaby","ahram","01111301983","accepted","asprin","W5YVs58k7HYonR0fsn1X6lGWWpa2");
         Intent i = new Intent(this, PharmacyRequest.class);
         i.putExtra("sampleObject", request);
         startActivity(i);
         finish();
-      S */
+
 
         // First we need to check availability of play services
         if (checkPlayServices()) {
@@ -80,6 +80,7 @@ public class PharmacyHomeActivity extends AppCompatActivity implements GoogleApi
         firebaseAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
         uID = firebaseAuth.getCurrentUser().getUid();
+        
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

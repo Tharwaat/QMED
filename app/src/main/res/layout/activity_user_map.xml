@@ -2,7 +2,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.root.qmed.UserMapActivity">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="bottom|center"
+
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginStart="42dp"
+        app:cardBackgroundColor="#7A7878"
+        app:cardCornerRadius="25dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvSignUp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password"
+        tools:ignore="MissingConstraints">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            >
+
+            <TextView
+                android:id="@+id/requestmed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="Request a medicine"
+                android:textColor="#000"
+                android:textIsSelectable="true"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
 
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
@@ -13,14 +52,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="com.example.root.qmed.UserMapActivity" />
-
-    <Button
-        android:id="@+id/req_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/request_med"
-        android:layout_gravity="bottom"/>
-
 
 
 </FrameLayout>
