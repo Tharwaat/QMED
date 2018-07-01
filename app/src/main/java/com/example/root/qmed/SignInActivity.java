@@ -150,7 +150,6 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         }
         else {
             startActivity(new Intent(getApplicationContext(), PharmacyHomeActivity.class));
-
             finish();
         }
 

@@ -72,6 +72,7 @@ public class UserMapActivity extends FragmentActivity implements OnMapReadyCallb
                 intent.putExtras(b);
 
                 startActivity(intent);
+                finish();
             }
         });
     }
