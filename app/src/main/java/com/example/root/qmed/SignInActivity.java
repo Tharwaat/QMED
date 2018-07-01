@@ -121,7 +121,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
             userLogin();
         }
         if (view==textViewSignup){
-            startActivity(new Intent(this,SignUpActivity.class));//hena el mfrood  n5leh yro7 3la register
+            startActivity(new Intent(this,UserMapActivity.class));//hena el mfrood  n5leh yro7 3la register
             finish();
         }
     }

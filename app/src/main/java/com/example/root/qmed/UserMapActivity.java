@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.firebase.geofire.GeoFire;
 import com.firebase.geofire.GeoLocation;
@@ -41,6 +42,7 @@ public class UserMapActivity extends FragmentActivity implements OnMapReadyCallb
     Location mLastLocation;
     LocationRequest mLocationRequest;
     Button mRequest;
+    TextView Requestmed;
     LatLng orderLocation;
 
     @Override
@@ -53,9 +55,9 @@ public class UserMapActivity extends FragmentActivity implements OnMapReadyCallb
         mapFragment.getMapAsync(this);
         /////
 
-        mRequest = (Button) findViewById(R.id.req_button);
-
-        mRequest.setOnClickListener(new View.OnClickListener() {
+        //mRequest = (Button) findViewById(R.id.req_button);
+        Requestmed = (TextView) findViewById(R.id.requestmed);
+        Requestmed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Location l = mLastLocation;
@@ -165,7 +167,7 @@ public class UserMapActivity extends FragmentActivity implements OnMapReadyCallb
                     pharmacyRef.updateChildren(map);
 
                     getPharmacyLocation();*/
-                    mRequest.setText("Waiting for nearby pharmacies response....");
+                    Requestmed.setText("Waiting for nearby pharmacies response....");
 
                 }
             }
@@ -238,5 +240,8 @@ public class UserMapActivity extends FragmentActivity implements OnMapReadyCallb
         });
 
     }*/
+
+
+
 
 }
