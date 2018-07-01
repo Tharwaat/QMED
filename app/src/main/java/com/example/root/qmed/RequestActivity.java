@@ -30,6 +30,7 @@ public class RequestActivity extends AppCompatActivity {
              intent.putExtras(b);
 
              startActivity(intent);
+             finish();
             }
         });
 

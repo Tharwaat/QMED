@@ -43,7 +43,6 @@ public class UserMapActivity extends FragmentActivity implements OnMapReadyCallb
     LocationRequest mLocationRequest;
     Button mRequest;
     LatLng orderLocation;
-    TextView Requestmed;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,10 +52,10 @@ public class UserMapActivity extends FragmentActivity implements OnMapReadyCallb
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         /////
-        Requestmed = (TextView) findViewById(R.id.requestmed);
-        //mRequest = (Button) findViewById(R.id.);
 
-        Requestmed.setOnClickListener(new View.OnClickListener() {
+        mRequest = (Button) findViewById(R.id.req_button);
+
+        mRequest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Location l = mLastLocation;
@@ -73,6 +72,7 @@ public class UserMapActivity extends FragmentActivity implements OnMapReadyCallb
                 intent.putExtras(b);
 
                 startActivity(intent);
+                finish();
             }
         });
     }

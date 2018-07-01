@@ -80,7 +80,7 @@ public class PharmacyHomeActivity extends AppCompatActivity implements GoogleApi
         firebaseAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
         uID = firebaseAuth.getCurrentUser().getUid();
-        
+
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

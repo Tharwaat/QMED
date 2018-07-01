@@ -35,7 +35,8 @@
     <string name="req_med">Panadol?</string>
     <string name="hint_txt">Please, enter below the required medicine.</string>
     <string name="find_btn">Find!</string>
-    <string name="result_med">result medecine here</string>
+    <string name="refresh_btn">Check Request!</string>
+    <string name="state">state</string>
     <string-array name="settings">
         <item>Settings</item>
         <item>Change user-name</item>
