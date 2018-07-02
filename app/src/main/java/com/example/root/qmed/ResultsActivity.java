@@ -1,8 +1,11 @@
 package com.example.root.qmed;
 
+import android.content.Intent;
 import android.location.Location;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.firebase.geofire.GeoFire;
@@ -10,46 +13,53 @@ import com.firebase.geofire.GeoLocation;
 import com.firebase.geofire.GeoQuery;
 import com.firebase.geofire.GeoQueryEventListener;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class ResultsActivity extends AppCompatActivity {
 
 
     LatLng orderLocation;
     TextView resultMed;
-
+    private int radius = 1;
+    private Boolean pharmacyFound = false;
+    private String pharmacyFoundID;
+    String uID;
+    Button mRefresh;
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
 
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        uID = firebaseAuth.getCurrentUser().getUid();
+
         resultMed = (TextView) findViewById(R.id.resulttxt);
+        mRefresh = (Button) findViewById(R.id.refreshbtn);
 
         Bundle b = getIntent().getExtras();
-
-        resultMed.setText(b.getString("reqMed"));
-
+        //resultMed.setText(b.getString("reqMed"));
+        String medname = b.getString("reqMed");
         double curlon = b.getDouble("curlon");
         double curlat = b.getDouble("curlat");
-
         orderLocation = new LatLng(curlat,curlon);
 
-         int a = 0;
-         int c = 0;
-        getClosestDriver(orderLocation);
+        getClosestPharmacy(orderLocation, medname);
 
-
+        /*Intent intent = new Intent(getApplicationContext(),ResultsActivity.class);
+        startActivity(intent);*/
     }
 
 
 
-    private int radius = 1;
-    private Boolean pharmacyFound = false;
-    private String pharmacyFoundID;
 
-    private void getClosestDriver(final LatLng curLocation){
+
+    private void getClosestPharmacy(final LatLng curLocation, final String mname){
         DatabaseReference pharmacyLocation = FirebaseDatabase.getInstance().getReference().child("availPharmacies");
 
         GeoFire geoFire = new GeoFire(pharmacyLocation);
@@ -63,16 +73,7 @@ public class ResultsActivity extends AppCompatActivity {
                     pharmacyFound = true;
                     pharmacyFoundID = key;
 
-                    resultMed.setText(pharmacyFoundID);
-                    /*DatabaseReference pharmacyRef = FirebaseDatabase.getInstance().getReference().child("Users").child(pharmacyFoundID);
-                    String customerId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
-                    HashMap map = new HashMap();
-                    map.put("customerRequestId", customerId);
-                    pharmacyRef.updateChildren(map);
-
-                    getPharmacyLocation();*/
-
+                    CreateRequest(mname, pharmacyFoundID);
                 }
             }
 
@@ -91,12 +92,48 @@ public class ResultsActivity extends AppCompatActivity {
                 if (!pharmacyFound)
                 {
                     radius++;
-                    getClosestDriver(curLocation);
+                    getClosestPharmacy(curLocation,mname);
                 }
             }
 
             @Override
             public void onGeoQueryError(DatabaseError error) {
+
+            }
+        });
+    }
+
+    public void CreateRequest(String MedName, String PID){
+
+
+        DatabaseReference newReq = FirebaseDatabase.getInstance().getReference().child("Requests")
+                                    .child(PID).child(uID).child("medicine");
+        newReq.setValue(MedName);
+
+        newReq = FirebaseDatabase.getInstance().getReference().child("Requests")
+                .child(PID).child(uID).child("state");
+
+        newReq.setValue("stall");
+    }
+
+    public void CheckState(DataSnapshot ds){
+        String state = (String) ds.child("Requests").child(pharmacyFoundID).child(uID).child("state").getValue();
+        /*if (state.equals("accepted"))*/ resultMed.setText(state);
+
+    }
+
+
+    public void CheckRequest(View view) {
+        DatabaseReference newReq = FirebaseDatabase.getInstance().getReference();
+
+        newReq.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                CheckState(dataSnapshot);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
             }
         });
