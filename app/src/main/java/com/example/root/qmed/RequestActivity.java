@@ -127,6 +127,11 @@ public class RequestActivity extends AppCompatActivity {
 
         newReq.setValue("stall");
 
+        newReq = FirebaseDatabase.getInstance().getReference().child("Requests")
+                .child(PID).child(uID).child("userAction");
+
+        newReq.setValue("stall");
+
         newReq = FirebaseDatabase.getInstance().getReference().child("PendingRequests").child(uID);
         newReq.setValue(PID);
 
