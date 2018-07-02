@@ -37,6 +37,8 @@
     <string name="find_btn">Find!</string>
     <string name="refresh_btn">Check Request!</string>
     <string name="state">state</string>
+    <string name="bookbtn">Book</string>
+    <string name="orderbtn">Order</string>
     <string-array name="settings">
         <item>Settings</item>
         <item>Change user-name</item>
