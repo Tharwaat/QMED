@@ -27,7 +27,7 @@ public class ResultsActivity extends AppCompatActivity {
     TextView resultMed;
     private int radius = 1;
     private Boolean pharmacyFound = false;
-    private String pharmacyFoundID;
+    private String pid;
     String uID;
     Button mRefresh;
     @Override
@@ -40,14 +40,14 @@ public class ResultsActivity extends AppCompatActivity {
         uID = firebaseAuth.getCurrentUser().getUid();
 
         resultMed = (TextView) findViewById(R.id.resulttxt);
-        mRefresh = (Button) findViewById(R.id.refreshbtn);
+        pid = getIntent().getStringExtra("pid");
 
-        Bundle b = getIntent().getExtras();
+
         //resultMed.setText(b.getString("reqMed"));
-        String medname = b.getString("reqMed");
+        /*String medname = b.getString("reqMed");
         double curlon = b.getDouble("curlon");
         double curlat = b.getDouble("curlat");
-        orderLocation = new LatLng(curlat,curlon);
+        orderLocation = new LatLng(curlat,curlon);*/
 
         //getClosestPharmacy(orderLocation, medname);
 
@@ -59,7 +59,7 @@ public class ResultsActivity extends AppCompatActivity {
 
 
 
-    private void getClosestPharmacy(final LatLng curLocation, final String mname){
+   /* private void getClosestPharmacy(final LatLng curLocation, final String mname){
         DatabaseReference pharmacyLocation = FirebaseDatabase.getInstance().getReference().child("availPharmacies");
 
         GeoFire geoFire = new GeoFire(pharmacyLocation);
@@ -114,10 +114,10 @@ public class ResultsActivity extends AppCompatActivity {
                 .child(PID).child(uID).child("state");
 
         newReq.setValue("stall");
-    }
+    }*/
 
     public void CheckState(DataSnapshot ds){
-        String state = (String) ds.child("Requests").child(pharmacyFoundID).child(uID).child("state").getValue();
+        String state = (String) ds.child("Requests").child(pid).child(uID).child("state").getValue();
         /*if (state.equals("accepted"))*/ resultMed.setText(state);
 
     }
