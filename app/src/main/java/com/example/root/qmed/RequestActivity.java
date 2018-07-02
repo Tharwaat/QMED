@@ -22,15 +22,15 @@ public class RequestActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-             String med = medicine.getText().toString();
-             Bundle b = getIntent().getExtras();
-             b.putString("reqMed", med);
+                String med = medicine.getText().toString();
+                Bundle b = getIntent().getExtras();
+                b.putString("reqMed", med);
 
-             Intent intent = new Intent(getApplicationContext(),ResultsActivity.class);
-             intent.putExtras(b);
+                Intent intent = new Intent(getApplicationContext(),ResultsActivity.class);
+                intent.putExtras(b);
 
-             startActivity(intent);
-             finish();
+                startActivity(intent);
+                finish();
             }
         });
 

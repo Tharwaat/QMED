@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -148,5 +149,18 @@ public class UserHomeActivity extends AppCompatActivity
         getemail = (String) dataSnapshot.child("Users").child(userID).child("email").getValue();
         username.setText(displayname);
         email.setText(getemail);
+    }
+
+    public void request(View view) {
+        startActivity(new Intent(this,UserMapActivity.class));
+        finish();
+    }
+
+    public void check(View view) {
+        startActivity(new Intent(this,ResultsActivity.class));
+        finish();
+    }
+
+    public void search(View view) {
     }
 }

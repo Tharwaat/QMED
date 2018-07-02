@@ -49,7 +49,7 @@ public class ResultsActivity extends AppCompatActivity {
         double curlat = b.getDouble("curlat");
         orderLocation = new LatLng(curlat,curlon);
 
-        getClosestPharmacy(orderLocation, medname);
+        //getClosestPharmacy(orderLocation, medname);
 
         /*Intent intent = new Intent(getApplicationContext(),ResultsActivity.class);
         startActivity(intent);*/
