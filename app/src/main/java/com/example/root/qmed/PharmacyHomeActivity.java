@@ -65,12 +65,6 @@ public class PharmacyHomeActivity extends AppCompatActivity implements GoogleApi
         firebaseAuth = FirebaseAuth.getInstance();
         //firebaseAuth = FirebaseAuth.getInstance();
 
-        Request request = new Request("omar","3ezzaby","ahram","01111301983","accepted","asprin","W5YVs58k7HYonR0fsn1X6lGWWpa2");
-        Intent i = new Intent(this, PharmacyRequest.class);
-        i.putExtra("sampleObject", request);
-        startActivity(i);
-        finish();
-
 
         // First we need to check availability of play services
         if (checkPlayServices()) {
@@ -81,17 +75,6 @@ public class PharmacyHomeActivity extends AppCompatActivity implements GoogleApi
         mDatabase = FirebaseDatabase.getInstance().getReference();
         uID = firebaseAuth.getCurrentUser().getUid();
 
-        mDatabase.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                //getRequests(dataSnapshot);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
 
         Button mlogoutbtn = (Button) findViewById(R.id.logout);
         mlogoutbtn.setOnClickListener(new View.OnClickListener() {
@@ -187,22 +170,11 @@ public class PharmacyHomeActivity extends AppCompatActivity implements GoogleApi
         mGoogleApiClient.connect();
     }
 
-   /* private void getRequests(DataSnapshot dataSnapshot) {
-        for (DataSnapshot ds : dataSnapshot.getChildren())
-        {
-            Request request = new Request();
-            String customerID ;
-            customerID = "W5YVs58k7HYonR0fsn1X6lGWWpa2";
-
-            request.setCustomerAddress((String) dataSnapshot.child("Users").child(customerID).child("address").getValue());
-            request.setCustomerName((String) dataSnapshot.child("Users").child(customerID).child("name").getValue());
-            request.setCustomerPhone((String) dataSnapshot.child("Users").child(customerID).child("phone").getValue());
-            request.setMedicine((String) dataSnapshot.child("Requests").child(pharmacyID).child(customerID).child("medicine").getValue());
-            request.setPharmacy((String) dataSnapshot.child("Users").child(pharmacyID).child("name").getValue());
-            request.setState((String) dataSnapshot.child("Requests").child(pharmacyID).child(customerID).child("state").getValue());
-        }
+    public void showAllRequests(View view) {
+        startActivity(new Intent(this,ShowRequests.class));
+        finish();
+    }
 
 
-    }*/
 
 }

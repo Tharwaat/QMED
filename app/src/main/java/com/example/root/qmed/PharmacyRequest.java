@@ -11,7 +11,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class PharmacyRequest extends AppCompatActivity {
-    TextView name,address,phone,medicine;
+    TextView name,address,phone,medicine,userAction;
     private FirebaseAuth firebaseAuth;
     private DatabaseReference mDatabase;
     String pharmacyID;
@@ -26,12 +26,14 @@ public class PharmacyRequest extends AppCompatActivity {
         address = (TextView)findViewById(R.id.customerAddress);
         phone = (TextView)findViewById(R.id.customerPhone);
         medicine =(TextView)findViewById(R.id.medicine);
+        userAction  =(TextView)findViewById(R.id.userAction);
         Intent i = getIntent();
         Request request = (Request) i.getSerializableExtra("sampleObject");
         name.setText(request.getCustomerName());
         address.setText(request.getCustomerAddress());
         phone.setText(request.getCustomerPhone());
         medicine.setText(request.getMedicine());
+        userAction.setText(request.getUserAction());
         customerID = request.getCustomerID();
 
     }

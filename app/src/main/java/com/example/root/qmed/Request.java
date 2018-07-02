@@ -14,13 +14,14 @@ public class Request implements Serializable{
     String state = "stall";
     String medicine;
     String customerID;
+    String userAction;
 
     public Request()
     {
 
     }
 
-    public Request(String customerName, String pharmacy, String customerAddress, String customerPhone, String state, String medicine, String customerID) {
+    public Request(String customerName, String pharmacy, String customerAddress, String customerPhone, String state, String medicine, String customerID, String userAction) {
         this.customerName = customerName;
         this.pharmacy = pharmacy;
         this.customerAddress = customerAddress;
@@ -28,6 +29,7 @@ public class Request implements Serializable{
         this.state = state;
         this.medicine = medicine;
         this.customerID = customerID;
+        this.userAction = userAction;
     }
 
     public String getCustomerName() {
@@ -84,5 +86,13 @@ public class Request implements Serializable{
 
     public void setCustomerID(String customerID) {
         this.customerID = customerID;
+    }
+
+    public String getUserAction() {
+        return userAction;
+    }
+
+    public void setUserAction(String userAction) {
+        this.userAction = userAction;
     }
 }
