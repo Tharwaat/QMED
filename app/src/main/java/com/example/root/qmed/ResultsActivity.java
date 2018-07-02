@@ -23,13 +23,11 @@ import com.google.firebase.database.ValueEventListener;
 public class ResultsActivity extends AppCompatActivity {
 
 
-    LatLng orderLocation;
+
     TextView resultMed;
-    private int radius = 1;
-    private Boolean pharmacyFound = false;
-    private String pharmacyFoundID;
+    private String pid;
     String uID;
-    Button mRefresh;
+
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,16 +38,30 @@ public class ResultsActivity extends AppCompatActivity {
         uID = firebaseAuth.getCurrentUser().getUid();
 
         resultMed = (TextView) findViewById(R.id.resulttxt);
-        mRefresh = (Button) findViewById(R.id.refreshbtn);
+        /*Bundle b = getIntent().getExtras();
+        pid = b.getString("pid");*/
 
-        Bundle b = getIntent().getExtras();
+        DatabaseReference newReq = FirebaseDatabase.getInstance().getReference();
+        newReq.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                pid = (String) dataSnapshot.child("PendingRequests").child(uID).getValue();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
         //resultMed.setText(b.getString("reqMed"));
-        String medname = b.getString("reqMed");
+        /*String medname = b.getString("reqMed");
         double curlon = b.getDouble("curlon");
         double curlat = b.getDouble("curlat");
-        orderLocation = new LatLng(curlat,curlon);
+        orderLocation = new LatLng(curlat,curlon);*/
 
-        getClosestPharmacy(orderLocation, medname);
+        //getClosestPharmacy(orderLocation, medname);
 
         /*Intent intent = new Intent(getApplicationContext(),ResultsActivity.class);
         startActivity(intent);*/
@@ -59,7 +71,7 @@ public class ResultsActivity extends AppCompatActivity {
 
 
 
-    private void getClosestPharmacy(final LatLng curLocation, final String mname){
+   /* private void getClosestPharmacy(final LatLng curLocation, final String mname){
         DatabaseReference pharmacyLocation = FirebaseDatabase.getInstance().getReference().child("availPharmacies");
 
         GeoFire geoFire = new GeoFire(pharmacyLocation);
@@ -114,10 +126,10 @@ public class ResultsActivity extends AppCompatActivity {
                 .child(PID).child(uID).child("state");
 
         newReq.setValue("stall");
-    }
+    }*/
 
     public void CheckState(DataSnapshot ds){
-        String state = (String) ds.child("Requests").child(pharmacyFoundID).child(uID).child("state").getValue();
+        String state = (String) ds.child("Requests").child(pid).child(uID).child("state").getValue();
         /*if (state.equals("accepted"))*/ resultMed.setText(state);
 
     }

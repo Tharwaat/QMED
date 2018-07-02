@@ -129,7 +129,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         String type = (String) dataSnapshot.child("Users").child(userId).child("type").getValue();
 
         if(type.equals("Customer")) {
-            startActivity(new Intent(getApplicationContext(), UserMapActivity.class));
+            startActivity(new Intent(getApplicationContext(), UserHomeActivity.class));
             finish();
         }
         else {
