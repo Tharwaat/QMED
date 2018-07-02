@@ -67,9 +67,9 @@ public class PharmacyHomeActivity extends AppCompatActivity implements GoogleApi
 
         Request request = new Request("omar","3ezzaby","ahram","01111301983","accepted","asprin","W5YVs58k7HYonR0fsn1X6lGWWpa2");
         Intent i = new Intent(this, PharmacyRequest.class);
-        /*i.putExtra("sampleObject", request);
-        //startActivity(i);
-        finish();*/
+        i.putExtra("sampleObject", request);
+        startActivity(i);
+        finish();
 
 
         // First we need to check availability of play services

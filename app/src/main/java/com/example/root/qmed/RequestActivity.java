@@ -15,6 +15,7 @@ import com.firebase.geofire.GeoLocation;
 import com.firebase.geofire.GeoQuery;
 import com.firebase.geofire.GeoQueryEventListener;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -35,6 +36,9 @@ public class RequestActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request);
 
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        uID = firebaseAuth.getCurrentUser().getUid();
+
         final EditText medicine = (EditText) findViewById(R.id.medrequest);
 
         final Button findbtn = (Button) findViewById(R.id.findbtn);
@@ -54,10 +58,7 @@ public class RequestActivity extends AppCompatActivity {
 
                 getClosestPharmacy(orderLocation, med);
 
-                Intent intent = new Intent(getApplicationContext(),UserHomeActivity.class);
-                intent.putExtra("pid", pharmacyFoundID);
-                startActivity(intent);
-                finish();
+
 
                 /*b.putString("reqMed", med);
 
@@ -126,7 +127,18 @@ public class RequestActivity extends AppCompatActivity {
 
         newReq.setValue("stall");
 
+        newReq = FirebaseDatabase.getInstance().getReference().child("PendingRequests").child(uID);
+        newReq.setValue(PID);
+
         Toast.makeText(RequestActivity.this,"Your request has been created, you can check it's state by clicking on check state",Toast.LENGTH_LONG).show();
+
+        //Bundle b = new Bundle();
+        //b.putString("pid",PID);
+
+        Intent intent = new Intent(getApplicationContext(),UserHomeActivity.class);
+        //intent.putExtras(b);
+        startActivity(intent);
+        finish();
     }
 
 
