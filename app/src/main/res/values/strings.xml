@@ -37,6 +37,8 @@
     <string name="find_btn">Find!</string>
     <string name="refresh_btn">Check Request!</string>
     <string name="state">state</string>
+    <string name="enter_the_name_of_the_medicine">Enter the name of the medicine</string>
+    <string name="search">Search</string>
     <string-array name="settings">
         <item>Settings</item>
         <item>Change user-name</item>
