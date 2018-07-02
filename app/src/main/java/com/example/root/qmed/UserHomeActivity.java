@@ -31,7 +31,7 @@ public class UserHomeActivity extends AppCompatActivity
     private String getemail;
     private String userID;
     private DatabaseReference mDatabase;
-
+    String pid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +45,13 @@ public class UserHomeActivity extends AppCompatActivity
             startActivity(new Intent(this ,SignInActivity.class));
             finish();
         }
+
+
+
         FirebaseUser user = firebaseAuth.getCurrentUser();
         username = (TextView) findViewById(R.id.navusername);
         email = (TextView) findViewById(R.id.navemail);
+
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
@@ -157,7 +161,13 @@ public class UserHomeActivity extends AppCompatActivity
     }
 
     public void check(View view) {
-        startActivity(new Intent(this,ResultsActivity.class));
+        /*Bundle b = getIntent().getExtras();
+        pid = b.getString("pid");
+
+        int a = 9;*/
+        Intent intent = new Intent(getApplicationContext(),ResultsActivity.class);
+       // intent.putExtra("pid", pid);
+        startActivity(intent);
         finish();
     }
 
