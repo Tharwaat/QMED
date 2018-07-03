@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/backgrey"
     tools:context="com.example.root.qmed.SettingsActivity"
-    tools:layout_editor_absoluteY="25dp"
-    >
+    tools:layout_editor_absoluteY="25dp">
 
     <Spinner
         android:id="@+id/spinner"

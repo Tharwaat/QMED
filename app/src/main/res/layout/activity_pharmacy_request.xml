@@ -11,79 +11,114 @@
 
     <TextView
         android:id="@+id/customerName"
-        android:layout_width="298dp"
-        android:layout_height="47dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="263dp"
+        android:layout_marginEnd="43dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="178dp"
         android:background="@drawable/edittextwhite"
         android:text=""
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="43dp"
-        tools:layout_editor_absoluteY="178dp" />
+        app:layout_constraintBottom_toTopOf="@+id/acceptBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/medicine"
-        android:layout_width="298dp"
-        android:layout_height="47dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="43dp"
+        android:layout_marginStart="43dp"
         android:background="@drawable/edittextwhite"
         android:text=""
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="43dp"
-        tools:layout_editor_absoluteY="236dp" />
+        app:layout_constraintBottom_toTopOf="@+id/customerPhone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/customerName"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/customerPhone"
-        android:layout_width="298dp"
-        android:layout_height="47dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="43dp"
+        android:layout_marginStart="43dp"
         android:background="@drawable/edittextwhite"
         android:text=""
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="43dp"
-        tools:layout_editor_absoluteY="297dp" />
+        app:layout_constraintBottom_toTopOf="@+id/customerAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/medicine"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/customerAddress"
-        android:layout_width="298dp"
-        android:layout_height="47dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="43dp"
+        android:layout_marginStart="43dp"
         android:background="@drawable/edittextwhite"
         android:text=""
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="43dp"
-        tools:layout_editor_absoluteY="357dp" />
+        app:layout_constraintBottom_toTopOf="@+id/userAction"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/customerPhone"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/userAction"
-        android:layout_width="298dp"
-        android:layout_height="47dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="40dp"
+        android:layout_marginEnd="43dp"
+        android:layout_marginStart="43dp"
         android:background="@drawable/edittextwhite"
         android:text=""
         android:textAllCaps="false"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="43dp"
-        tools:layout_editor_absoluteY="414dp" />
+        app:layout_constraintBottom_toTopOf="@+id/rejectBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/customerAddress"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/acceptBtn"
-        android:layout_width="159dp"
-        android:layout_height="47dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="32dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginStart="16dp"
         android:background="@drawable/rounded_bg_button"
         android:onClick="acceptRequest"
         android:text="@string/acceptBtn"
         android:textIsSelectable="true"
         android:textSize="17sp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="488dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/rejectBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/customerName"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/rejectBtn"
-        android:layout_width="160dp"
-        android:layout_height="47dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="32dp"
+        android:layout_marginEnd="15dp"
         android:background="@drawable/rounded_bg_button"
         android:onClick="rejectRequest"
         android:text="@string/rejectBtn"
         android:textIsSelectable="true"
         android:textSize="17sp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="208dp"
-        tools:layout_editor_absoluteY="488dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/acceptBtn"
+        app:layout_constraintTop_toBottomOf="@+id/userAction"
+        tools:ignore="MissingConstraints" />
 
 </android.support.constraint.ConstraintLayout>
