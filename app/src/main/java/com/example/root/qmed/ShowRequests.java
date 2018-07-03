@@ -52,6 +52,7 @@ public class ShowRequests extends AppCompatActivity {
             request.setPharmacy((String) dataSnapshot.child("Users").child(pharmacyID).child("name").getValue());
             request.setState((String) dataSnapshot.child("Requests").child(pharmacyID).child(customerID).child("state").getValue());
             request.setUserAction((String) dataSnapshot.child("Requests").child(pharmacyID).child(customerID).child("userAction").getValue());
+            request.setCustomerID(customerID);
         }
             Intent i = new Intent(this, PharmacyRequest.class);
             i.putExtra("sampleObject", request);

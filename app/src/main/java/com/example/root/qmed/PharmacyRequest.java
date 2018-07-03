@@ -47,7 +47,6 @@ public class PharmacyRequest extends AppCompatActivity {
         mDatabase.child("Requests").child(pharmacyID).child(customerID).child("state").setValue("accepted");
         startActivity(new Intent(getApplicationContext(), PharmacyHomeActivity.class));
         finish();
-
     }
 
 
