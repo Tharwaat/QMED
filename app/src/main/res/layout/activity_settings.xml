@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgrey"
+    android:background="@drawable/backgreylast"
     tools:context="com.example.root.qmed.SettingsActivity"
     tools:layout_editor_absoluteY="25dp">
 

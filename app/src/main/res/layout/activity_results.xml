@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgrey"
+    android:background="@drawable/backgreylast"
     tools:context=".ResultsActivity"
     tools:layout_editor_absoluteY="25dp">
 
@@ -31,7 +31,7 @@
         android:layout_marginBottom="106dp"
         android:layout_marginTop="205dp"
         android:background="@drawable/edittextwhite"
-        android:text="@string/state"
+        android:text=" "
         android:textAlignment="center"
         android:textIsSelectable="true"
         android:textSize="17sp"

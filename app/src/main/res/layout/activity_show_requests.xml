@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.root.qmed.ShowRequests"
-    android:background="@drawable/backgrey"
+    android:background="@drawable/backgreylast"
     >
 
 </android.support.constraint.ConstraintLayout>

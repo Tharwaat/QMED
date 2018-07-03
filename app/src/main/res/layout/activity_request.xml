@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgrey"
+    android:background="@drawable/backgreylast"
     tools:context=".RequestActivity"
     tools:layout_editor_absoluteY="25dp">
 
@@ -39,7 +39,7 @@
     <Button
         android:id="@+id/findbtn"
         android:layout_width="204dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="86dp"
         android:background="@drawable/rounded_bg_button"
         android:text="@string/search"
