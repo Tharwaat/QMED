@@ -39,6 +39,8 @@
     <string name="state">state</string>
     <string name="enter_the_name_of_the_medicine">Enter the name of the medicine</string>
     <string name="search">Search</string>
+    <string name="bookbtn">Book</string>
+    <string name="orderbtn">Order</string>
     <string-array name="settings">
         <item>Settings</item>
         <item>Change user-name</item>

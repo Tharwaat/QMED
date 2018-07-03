@@ -10,15 +10,21 @@
 
     <EditText
         android:id="@+id/medrequest"
-        android:layout_width="363dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="183dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="202dp"
         android:ems="10"
         android:hint="@string/enter_the_name_of_the_medicine"
         android:inputType="textPersonName"
-        android:textColorHint="#    E1DFDF"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="11dp"
-        tools:layout_editor_absoluteY="202dp" />
+        android:textColorHint="#E1DFDF"
+        app:layout_constraintBottom_toTopOf="@+id/findbtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
     <!--
     <TextView
         android:id="@+id/hinttxt"
@@ -33,13 +39,16 @@
     <Button
         android:id="@+id/findbtn"
         android:layout_width="204dp"
-        android:layout_height="50dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="86dp"
+        android:background="@drawable/rounded_bg_button"
         android:text="@string/search"
         android:textIsSelectable="true"
         android:textSize="17sp"
         android:textStyle="bold"
-        android:background="@drawable/rounded_bg_button"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="90dp"
-        tools:layout_editor_absoluteY="431dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/medrequest"
+        tools:ignore="MissingConstraints" />
 </android.support.constraint.ConstraintLayout>

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.geofire.GeoFire;
 import com.firebase.geofire.GeoLocation;
@@ -26,6 +27,7 @@ public class ResultsActivity extends AppCompatActivity {
 
     TextView resultMed;
     private String pid;
+    Button book, order;
     String uID;
 
     @Override
@@ -36,6 +38,11 @@ public class ResultsActivity extends AppCompatActivity {
 
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         uID = firebaseAuth.getCurrentUser().getUid();
+
+        book = (Button) findViewById(R.id.book);
+        order = (Button) findViewById(R.id.order);
+        book.setEnabled(false);
+        order.setEnabled(false);
 
         resultMed = (TextView) findViewById(R.id.resulttxt);
         /*Bundle b = getIntent().getExtras();
@@ -130,8 +137,15 @@ public class ResultsActivity extends AppCompatActivity {
 
     public void CheckState(DataSnapshot ds){
         String state = (String) ds.child("Requests").child(pid).child(uID).child("state").getValue();
-        /*if (state.equals("accepted"))*/ resultMed.setText(state);
-
+        if(state.equals("accepted")){
+            book.setEnabled(true);
+            order.setEnabled(true);
+            Toast.makeText(ResultsActivity.this,"Your request's been approved, you can either book or order your medicine",Toast.LENGTH_LONG).show();
+        }else if (state.equals("rejected")){
+            Toast.makeText(ResultsActivity.this,"Your request's been rejected",Toast.LENGTH_LONG).show();
+        }else{
+            Toast.makeText(ResultsActivity.this,"Still no response, please wait",Toast.LENGTH_LONG).show();
+        }
     }
 
 
@@ -150,4 +164,18 @@ public class ResultsActivity extends AppCompatActivity {
             }
         });
     }
-}
+
+    public void order(View view){
+        DatabaseReference newReq = FirebaseDatabase.getInstance().getReference().child("Requests")
+                .child(pid).child(uID).child("userAction");
+
+        newReq.setValue("order");
+    }
+
+    public void book(View view){
+        DatabaseReference newReq = FirebaseDatabase.getInstance().getReference().child("Requests")
+                .child(pid).child(uID).child("userAction");
+
+        newReq.setValue("book");
+    }
+ }
